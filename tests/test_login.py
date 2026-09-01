@@ -1,11 +1,23 @@
 from utils.helpers import load_test_data
 
+import os
+
 from selenium.webdriver.support import expected_conditions as EC
 
 from pages.login_page import LoginPage
 from utils.config import BASE_URL
 
 test_data = load_test_data("test_data/test_data.json")
+
+test_data["valid_login"]["username"] = os.getenv(
+    "DEMOBLAZE_USERNAME",
+    test_data["valid_login"]["username"]
+)
+
+test_data["valid_login"]["password"] = os.getenv(
+    "DEMOBLAZE_PASSWORD",
+    test_data["valid_login"]["password"]
+)
 
 
 def test_valid_login(driver, wait):

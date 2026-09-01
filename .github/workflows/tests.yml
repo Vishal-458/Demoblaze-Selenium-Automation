@@ -26,4 +26,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run tests
+        env:
+          DEMOBLAZE_USERNAME: ${{ secrets.DEMOBLAZE_USERNAME }}
+          DEMOBLAZE_PASSWORD: ${{ secrets.DEMOBLAZE_PASSWORD }}
         run: pytest
